@@ -1,24 +1,51 @@
 import * as express from 'express'
 import router from './Players/players.route'
 
-const app: express.Express = express()
+//싱글톤 패턴(객체는 오직 하나만)
 
-app.use((req,res,next) => {
-  console.log(req.rawHeaders[1])
-  console.log('Logging Middleware')
-  next()
-})
+class Server {
+    public app: express.Application;
+    
+    //Express 객체가 기준
+    constructor() {
+        const app: express.Application= express();
+        this.app=app;
+    }
 
-app.use(express.json());
+    private setRoute() {
+        this.app.use(router)
+    }
+    private setMiddleware () {
+        this.app.use((req,res,next) => {
+            console.log(req.rawHeaders[1])
+            console.log('Logging Middleware')
+            next()
+          })
+          
+        this.app.use(express.json());
+        
+        this.setRoute();
 
-//players.route에서 만든 router 등록해주기
-app.use(router)
+        this.app.use((req,res,next) => {
+              res.send({error:'없는 주소입니다'})
+              next()
+            })
 
-app.use((req,res,next) => {
-    res.send({error:'없는 주소입니다'})
-    next()
-  })
+    }
+
+    public listen() {
+        this.setMiddleware()
+        this.app.listen(8000, () => {
+            console.log('Server on!')
+            })
+    }
+}
+
+function init() {
+    //고유의 객체를 생성
+    const server=new Server()
+    server.listen();
+}
+
+init();
   
-  app.listen(8000, () => {
-    console.log('Server on!')
-  })
