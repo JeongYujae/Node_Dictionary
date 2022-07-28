@@ -1,34 +1,24 @@
-import * as express from "express";
-import { Player, Type} from "./app.model";
+import * as express from 'express'
+import router from './Players/players.route'
 
 const app: express.Express = express()
 
-//모든 과정을 거치기 전 미들웨어
 app.use((req,res,next) => {
   console.log(req.rawHeaders[1])
+  console.log('Logging Middleware')
   next()
 })
 
+app.use(express.json());
 
-app.get('/',(req:express.Request, res:express.Response) => {
-  res.send({Player})
-})
-
-app.get('/player/jeong', (req,res) => {
-  res.send({jeong:Player[0]})
-})
-
-app.get('/player/kim', (req,res) => {
-  res.send({kim:Player[1]})
-})
-
+//players.route에서 만든 router 등록해주기
+app.use(router)
 
 app.use((req,res,next) => {
-  res.send({error:'없는 주소입니다'})
-  next()
-})
-
-app.listen(8000, () => {
-  console.log('Server on!')
-})
-
+    res.send({error:'없는 주소입니다'})
+    next()
+  })
+  
+  app.listen(8000, () => {
+    console.log('Server on!')
+  })
