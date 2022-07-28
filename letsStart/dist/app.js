@@ -8,13 +8,13 @@ app.use(function (req, res, next) {
     next();
 });
 app.get('/', function (req, res) {
-    res.send({ List: app_model_1.List });
+    res.send({ Player: app_model_1.Player });
 });
-app.get('/List/blue', function (req, res) {
-    res.send({ blue: app_model_1.List[0] });
+app.get('/player/jeong', function (req, res) {
+    res.send({ jeong: app_model_1.Player[0] });
 });
-app.get('/List/som', function (req, res) {
-    res.send({ som: app_model_1.List[1] });
+app.get('/player/kim', function (req, res) {
+    res.send({ kim: app_model_1.Player[1] });
 });
 app.use(function (req, res, next) {
     res.send({ error: '없는 주소입니다' });

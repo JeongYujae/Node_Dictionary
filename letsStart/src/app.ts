@@ -1,10 +1,9 @@
 import * as express from "express";
-import { List, Type} from "./app.model";
+import { Player, Type} from "./app.model";
 
-// app 서버
 const app: express.Express = express()
 
-// 미들웨어 사용법(이 요소를 거치고 next를 통해 밑의 app 들 탐색)
+//모든 과정을 거치기 전 미들웨어
 app.use((req,res,next) => {
   console.log(req.rawHeaders[1])
   next()
@@ -12,15 +11,15 @@ app.use((req,res,next) => {
 
 
 app.get('/',(req:express.Request, res:express.Response) => {
-  res.send({List})
+  res.send({Player})
 })
 
-app.get('/List/blue', (req,res) => {
-  res.send({blue: List[0]})
+app.get('/player/jeong', (req,res) => {
+  res.send({jeong:Player[0]})
 })
 
-app.get('/List/som', (req,res) => {
-  res.send({som: List[1]})
+app.get('/player/kim', (req,res) => {
+  res.send({kim:Player[1]})
 })
 
 

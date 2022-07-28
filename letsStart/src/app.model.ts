@@ -1,67 +1,38 @@
 export type Type = {
 
     id: string;
-    
     name: string;
-    
     age: number;
-    
-    species: string;
-    
-    isCute: boolean;
-    
+    position: string;     
     friends: string[];
-    
     };
     
     
     
-    export const List: Type[] = [
+    export const Player: Type[] = [
     
     {
-    
     id: 'fsduifh',
-    
-    name: 'blue',
-    
-    age: 8,
-    
-    species: 'Russian Blue',
-    
-    isCute: true,
-    
+    name: 'jeong',
+    age: 22, 
+    position: 'ST',  
     friends: ['asdfhj29009', 'WE09tju2j'],
-    
     },
     
     {
-    
     id: 'iohf2309q4hr',
-    
-    name: 'som',
-    
-    age: 4,
-    
-    species: 'Sphynx cat',
-    
-    isCute: true,
-    
+    name: 'kim',
+    age: 30,
+    position: 'CDM', 
     friends: ['weju0fj20qj', 'asdfhj29009', 'weju0fj20qj'],
-    
     },
     
     {
     
-    id: 'WE09tju2j',
-    
-    name: 'lean',
-    
-    age: 6,
-    
-    species: 'Munchkin',
-    
-    isCute: false,
-    
+    id: 'WE09tju2jAAA',
+    name: 'lee',
+    age: 27,
+    position: 'LW',
     friends: [],
     
     },
@@ -69,33 +40,19 @@ export type Type = {
     {
     
     id: 'asdfhj29009',
-    
-    name: 'star',
-    
-    age: 10,
-    
-    species: 'Scottish Fold',
-    
-    isCute: true,
-    
+    name: 'park',
+    age: 50,
+    position: 'CB',
     friends: ['weju0fj20qj'],
-    
     },
     
     {
     
     id: 'weju0fj20qj',
-    
-    name: 'red',
-    
-    age: 2,
-    
-    species: 'Sharm',
-    
-    isCute: false,
-    
+    name: 'choi',
+    age: 24,
+    position: 'CM',
     friends: [],
-    
     },
     
     ];
