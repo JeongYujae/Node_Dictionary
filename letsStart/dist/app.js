@@ -1,15 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
+var app_model_1 = require("./app.model");
 var app = express();
-var port = 8000;
+app.use(function (req, res, next) {
+    console.log(req.rawHeaders[1]);
+    next();
+});
 app.get('/', function (req, res) {
-    res.send({ name: '정', age: 22 });
+    res.send({ List: app_model_1.List });
 });
-app.post('/', function (req, res) {
-    res.send({ '포스트로 보낸 객체': 2022 });
+app.get('/List/blue', function (req, res) {
+    res.send({ blue: app_model_1.List[0] });
 });
-app.listen(port, function () {
-    console.log("Example app listening on port http://localhost:" + port);
+app.get('/List/som', function (req, res) {
+    res.send({ som: app_model_1.List[1] });
+});
+app.use(function (req, res, next) {
+    res.send({ error: '없는 주소입니다' });
+    next();
+});
+app.listen(8000, function () {
+    console.log('Server on!');
 });
 //# sourceMappingURL=app.js.map
