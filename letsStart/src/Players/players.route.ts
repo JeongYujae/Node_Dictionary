@@ -3,6 +3,7 @@ import {Router} from 'express'
 import { createPlayer, deleteData, readAllPlayer, readSpecPlayer, updateAllData, updateSpecData } from "./players.service";
 
 // Router를 위한 비즈니스 패턴
+
 const router= Router()
 
 router.get('/players', readAllPlayer)

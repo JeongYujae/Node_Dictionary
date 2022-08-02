@@ -49,7 +49,7 @@ export type Type = {
     {
     
     id: 'weju0fj20qj',
-    name: 'choi',
+    name: 'Choi',
     age: 24,
     position: 'CM',
     friends: [],
