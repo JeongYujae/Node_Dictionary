@@ -11,6 +11,13 @@ import { Player } from "./players.schema";
 export class PlayersRepository{
     constructor(@InjectModel(Player.name) private readonly playerModel:Model<Player>) {}
 
+    async findPlayerByEmail(email:string):Promise<Player | null> {
+        const player=await this.playerModel.findOne({email});
+        return player
+    }
+
+
+
     async existsByEmail(email:string): Promise<boolean> {
         try {
             const result= await this.playerModel.exists({email});

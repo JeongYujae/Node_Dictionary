@@ -6,6 +6,7 @@ import { PlayersModule } from './players/players.module';
 import { UsersModule } from './users/users.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
 import * as mongoose from "mongoose"
 @Module({
   // db url을 env 에 따로 둬서 노출이 안되게 서렁
@@ -15,7 +16,8 @@ import * as mongoose from "mongoose"
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }),PlayersModule,
-     UsersModule
+     UsersModule,
+     AuthModule
     ],
     controllers: [AppController],
     providers: [AppService],
